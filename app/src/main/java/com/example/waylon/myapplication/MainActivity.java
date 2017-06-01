@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private static String[] HABITS = new String[] {"Study Japanese", "Workout", "Relax"};
 
 
+    //Please work commit 2
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
