@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.waylon.myapplication.EditHabits">
+
+    <include
+        layout="@layout/navigation_actionbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/editHabit_confirmButton"
+        android:id="@+id/include">
+
+    </include>
+
+    <Button
+        android:id="@+id/editHabit_confirmButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:text="Confirm"
+        android:gravity="center_vertical"
+        android:minHeight="20dip"
+        android:paddingTop="16dip"
+        android:paddingBottom="9dip"
+        android:textSize="16sp"
+        android:layout_alignBaseline="@+id/editHabit_editTextName"/>
+
+    <EditText
+        android:id="@+id/editHabit_editTextName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Name"
+        android:textSize="25sp"
+        android:layout_marginLeft="5dip"
+        android:textStyle="normal"
+        android:background="@color/white"
+        android:inputType="textPersonName"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_toLeftOf="@+id/editHabit_confirmButton"
+        android:layout_toStartOf="@+id/editHabit_confirmButton" />
+
+    <EditText
+        android:id="@+id/editHabit_editTextDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:textSize="25sp"
+        android:hint="Description"
+        android:gravity="top"
+        android:lines="10"
+        android:inputType="textMultiLine"
+        android:layout_below="@+id/include"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+</RelativeLayout>

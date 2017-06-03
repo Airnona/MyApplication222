@@ -19,6 +19,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".EditHabits">
+
+            <intent-filter>
+                <action android:name="com.example.waylon.myapplication.EditHabits" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+
+        </activity>
     </application>
 
 </manifest>

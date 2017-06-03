@@ -3,6 +3,8 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
+
     <ToggleButton
         android:id="@+id/habitLayoutToggle"
         style="@style/toggleButton"
@@ -11,18 +13,18 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
+        android:layout_gravity="center"
         android:background="@drawable/star_toggle_bg"
         android:checked="false"
-
         android:text="ToggleButton" />
 
-    <EditText
+    <TextView
         android:id="@+id/habitLayoutText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPersonName"
         android:text="testttt"
+        android:maxLines="3"
         android:layout_alignBottom="@+id/habitLayoutToggle"
         android:layout_toRightOf="@+id/habitLayoutToggle"
         android:layout_toEndOf="@+id/habitLayoutToggle"
@@ -30,23 +32,14 @@
 
     <Button
         android:id="@+id/habitLayoutEditButton"
-        android:layout_alignBottom="@+id/habitLayoutToggle"
-        android:layout_alignTop="@+id/habitLayoutToggle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/habitLayoutText"
-        android:layout_toRightOf="@+id/habitLayoutText"
-        android:text="Edit" />
+        android:text="Edit"
 
-    <!--<ToggleButton-->
-    <!--android:id="@+id/starButton"-->
-    <!--style="@style/toggleButton"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="match_parent"-->
-    <!--android:layout_weight="1"-->
-    <!--android:background="@drawable/star_toggle_bg"-->
-    <!--android:checked="false"-->
-    <!--android:gravity="start" />-->
+        android:layout_alignBaseline="@+id/habitLayoutToggle"
+        android:layout_alignBottom="@+id/habitLayoutToggle"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
 
 </RelativeLayout>

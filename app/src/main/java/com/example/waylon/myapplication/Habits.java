@@ -16,7 +16,9 @@ public class Habits {
         this.desc = desc;
     }
 
-
+    public String getName(){
+        return this.name;
+    }
 
 
 }
