@@ -29,7 +29,6 @@
             layout="@layout/navigation_actionbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
         </include>
 
         <ListView
@@ -37,14 +36,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-
         </ListView>
 
         <Button
             android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:onClick="addHabit"
+            android:text="Add New Item" />
 
 
     </LinearLayout>

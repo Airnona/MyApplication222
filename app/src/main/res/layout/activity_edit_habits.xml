@@ -21,12 +21,13 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:text="Confirm"
         android:gravity="center_vertical"
         android:minHeight="20dip"
         android:paddingTop="16dip"
         android:paddingBottom="9dip"
+        android:text="Confirm"
         android:textSize="16sp"
+        android:onClick="testMethod"
         android:layout_alignBaseline="@+id/editHabit_editTextName"/>
 
     <EditText
