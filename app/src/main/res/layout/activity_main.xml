@@ -34,16 +34,42 @@
         <ListView
             android:id="@+id/habitListView"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="0dip"
+            android:layout_weight="1"
             android:orientation="horizontal">
+
+            <!--<Button-->
+                <!--android:id="@+id/button"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:onClick="addHabit"-->
+                <!--android:text="Add New Item" />-->
         </ListView>
 
-        <Button
-            android:id="@+id/button"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="addHabit"
-            android:text="Add New Item" />
+            android:background="@android:color/transparent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/viewChangeButton"
+                android:onClick="changeView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="View" />
+
+            <Button
+                android:id="@+id/addHabitButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:onClick="addHabit"
+                android:text="Add New Item"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+        </RelativeLayout>
 
 
     </LinearLayout>

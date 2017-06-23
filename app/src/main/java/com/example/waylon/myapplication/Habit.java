@@ -1,32 +1,53 @@
 package com.example.waylon.myapplication;
 
+import android.content.SharedPreferences;
+
 /**
  * Created by Waylon on 5/28/2017.
  */
 
 public class Habit {
-    private boolean favorite;
-    private int contDays, habit_ID;
-    private String name, desc;
+    private boolean favorite;           //Determines if Habit is favorited
+    private boolean isChecked;          //Determines if Habit has been marked off for the day
+    private int contDays;               //Determines Strength of habit
+    private int habit_ID;               //Determines NonVisible ID of habit, used in JSONs
+    private int number;                 //Determines the age of habit. Higher the number, the later it was created
+    private String name;                //Determines name of Habit
+    private String desc;                //Determines Description of Habit
 
-    public Habit(boolean favorite, String name, String desc){
+    public Habit(boolean favorite, boolean isChecked, String name, String desc, int number){
         this.favorite = favorite;
+        this.isChecked = isChecked;
         this.contDays = 0;
         this.name = name;
         this.desc = desc;
-    }                                  //Initialized Constructor
+        this.number = number;
+    }    //Initialized Constructor
     public Habit(){
         this.favorite = false;
+        this.isChecked = false;
         this.contDays = 0;
         this.name = null;
         this.desc = null;
-    }                                                                            //Default Constructor
+        this.number = 0;
+    }                                                                             //Default Constructor
     public Habit(Habit habit){
         this.name = habit.getName();
         this.desc = habit.getDesc();
         this.contDays = habit.getContDays();
         this.favorite = habit.getFavorite();
         this.habit_ID = habit.getHabit_ID();
+        this.number = habit.getNumber();
+        this.isChecked = habit.getIsChecked();
+    }
+    public Habit(int number){
+        this.favorite = false;
+        this.isChecked = false;
+        this.contDays = 0;
+        this.name = null;
+        this.desc = null;
+        this.number = number;
+
     }
 
                                                                                                     //Getter Methods
@@ -45,7 +66,14 @@ public class Habit {
     public int getHabit_ID(){
         return this.habit_ID;
     }
-                                                                                                    //Setter Methods
+    public int getNumber() {
+        return this.number;
+    }
+    public boolean getIsChecked(){
+        return this.isChecked;
+    }
+
+    //Setter Methods
     public void setName(String name){
         this.name = name;
     }
@@ -61,5 +89,10 @@ public class Habit {
     public void setHabit_ID(int habit_ID){
         this.habit_ID = habit_ID;
     }
-
+    public void setNumber(int number) {
+        this.number = number;
+    }
+    public void setIsChecked(boolean isChecked){
+        this.isChecked = isChecked;
+    }
 }

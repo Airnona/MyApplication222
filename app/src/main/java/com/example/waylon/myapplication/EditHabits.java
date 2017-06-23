@@ -13,7 +13,6 @@ import com.google.gson.Gson;
 public class EditHabits extends AppCompatActivity {
 
     EditText editTextName, editTextDesc;                                                            //Edit text boxes on the screen
-    Habit testHabit = new Habit(true, "Testname", "Testdesc");                                      //For testing purposes before dynamic saving is created
 
     public Integer habit_id;                                                                        //Tells which habit we're editing by ID #, gained from intent.getextra
     private boolean habit_new;
@@ -29,15 +28,15 @@ public class EditHabits extends AppCompatActivity {
         super.onCreate(savedInstanceState);                                                         //BASIC NEEDS
         setContentView(R.layout.activity_edit_habits);                                              //BASIC NEEDS
 
-        mPrefs = getPreferences(MODE_PRIVATE);
-        String json = mPrefs.getString("Testname", "");
-        Log.d("TESTING2222", json);
+        mPrefs = getSharedPreferences("EditHabits", 0);
 
         Intent intent = getIntent();
         habit_id = intent.getIntExtra("Habit_ID", -1);                                              //Sets Habit_id, -1 by default
-//        Log.e("Intent.getExtra", "" + habit_id);
         habit_new = intent.getBooleanExtra("Habit_New", false);                                     //Sets if this is going to be a new habit, false otherwise
-//        Log.d("Habit_ID", ""+ habit_id);
+        Log.e("Logging", "" + habit_id + "   HAbit_new: " + habit_new);
+
+        editTextName = (EditText) findViewById(R.id.editHabit_editTextName);
+        editTextDesc = (EditText) findViewById(R.id.editHabit_editTextDesc);
 
         if(habit_new){
             generateNewHabit();
@@ -47,44 +46,63 @@ public class EditHabits extends AppCompatActivity {
         }
 
 
-
-
-
-
         editTextName = (EditText) findViewById(R.id.editHabit_editTextName);
         editTextDesc = (EditText) findViewById(R.id.editHabit_editTextDesc);
-
-//        populateFields();
-
-
-
     }
 
 
     public void generateNewHabit(){
-        habit = new Habit();
+        int number = mPrefs.getInt("numHabits", 0);
+        habit = new Habit(number);
     }
     public void generateOldHabit(){
+        Gson gson = new Gson();
+        String json = mPrefs.getString(String.valueOf(habit_id), "");
+//        Log.e("Logging", "json: " + json);
+        habit = gson.fromJson(json, Habit.class);
+//        Log.e("Logging", "past habit?" + habit.getName());
 
+        editTextName.setText(habit.getName());
+        editTextDesc.setText(habit.getDesc());
     }
     public void confirmButtonMethod(View view){
         habit.setName(editTextName.getText().toString());
         habit.setDesc(editTextDesc.getText().toString());
+        habit.setHabit_ID(habit_id);
 
         saveHabit(habit);
+        finish();
     }
     public void saveHabit(Habit habit){
         SharedPreferences.Editor prefsEditor = mPrefs.edit();
         Gson gson = new Gson();
         String json = gson.toJson(habit);                                                        //Saves habitObject to gson
         prefsEditor.putString(habit_id.toString(), json);
-        Log.e("Habit_ID to string", habit_id.toString());
+//        Log.e("Logging", "Habit ID to String: " + habit_id.toString());
 
-        Log.d("SavingHabit", habit.getName() + "  " + habit.getDesc());
+//        Log.d("Logging", "Saving habit: " + habit.getName() + "  " + habit.getDesc());
+        editHabitCounter(1);
+        prefsEditor.commit();
+    }
+    public void editHabitCounter(int change){
+        int currentNum = mPrefs.getInt("numHabits", 0);
+        currentNum += change;
 
+        SharedPreferences.Editor prefsEditor = mPrefs.edit();
+        prefsEditor.putInt("numHabits", currentNum);
         prefsEditor.commit();
     }
 
+
+
+
+
+
+
+
+
+
+}
 
 
 //    public void addNewHabit(View view){
@@ -98,24 +116,24 @@ public class EditHabits extends AppCompatActivity {
 //        prefsEditor.commit();
 //
 //    }
-    public void testMethod(View view){
-        saveData();
-        getData();
-    }
-    public void saveData(){
-        SharedPreferences.Editor prefsEditor = mPrefs.edit();
-        Gson gson = new Gson();
-        String json = gson.toJson(testHabit);
-        prefsEditor.putString(testHabit.getName(), json);
-        prefsEditor.commit();
-    }
-    public void getData(){
-        Gson gson = new Gson();
-        String json = mPrefs.getString("Testname", "");
-        Log.d("Old JSON", "Old Json is:" + json);
-        Habit myObj = gson.fromJson(json, Habit.class);
-        Log.d("Object", myObj.getName() + "  " + myObj.getDesc());
-    }
+//    public void testMethod(View view){
+//        saveData();
+//        getData();
+//    }
+//    public void saveData(){
+//        SharedPreferences.Editor prefsEditor = mPrefs.edit();
+//        Gson gson = new Gson();
+//        String json = gson.toJson(testHabit);
+//        prefsEditor.putString(testHabit.getName(), json);
+//        prefsEditor.commit();
+//    }
+//    public void getData(){
+//        Gson gson = new Gson();
+//        String json = mPrefs.getString("Testname", "");
+//        Log.d("Logging", "Old Json is:" + json);
+//        Habit myObj = gson.fromJson(json, Habit.class);
+//        Log.d("Logging", "Object" + myObj.getName() + "  " + myObj.getDesc());
+//    }
 //    public void writeData(View view){
 //        String habitName = editTextName.getText().toString();
 //        String habitDesc = editTextDesc.getText().toString();
@@ -143,4 +161,3 @@ public class EditHabits extends AppCompatActivity {
 //    public void setHabit_id(int num){
 //        this.habit_id = num;
 //    }
-}

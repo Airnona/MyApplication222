@@ -27,7 +27,7 @@
         android:paddingBottom="9dip"
         android:text="Confirm"
         android:textSize="16sp"
-        android:onClick="testMethod"
+        android:onClick="confirmButtonMethod"
         android:layout_alignBaseline="@+id/editHabit_editTextName"/>
 
     <EditText

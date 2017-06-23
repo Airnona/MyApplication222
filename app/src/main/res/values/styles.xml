@@ -17,15 +17,21 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    <style name="Widget.Button.Toggle" parent="android:Widget">
+
+
+    <style name="Widget.Button.Toggle" parent="android:Widget">                                     <!-- Style used for Star Toggle -->
         <item name="android:background">@drawable/star_toggle_bg</item>
         <item name="android:disabledAlpha">?android:attr/disabledAlpha</item>
     </style>
-
     <style name="toggleButton" parent="@android:style/Theme.Black">
         <item name="android:buttonStyleToggle">@style/Widget.Button.Toggle</item>
         <item name="android:textOn"></item>
         <item name="android:textOff"></item>
+    </style>
+
+    <style name="ListViewStyle" parent="@android:style/Widget.ListView">
+        <item name="android:background">@drawable/test_coloredbg</item>
+        <item name="android:disabledAlpha">?android:attr/disabledAlpha</item>
     </style>
 
 </resources>
